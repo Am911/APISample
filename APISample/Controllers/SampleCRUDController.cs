@@ -1,6 +1,7 @@
 ﻿using APISample.Interface;
 using APISample.Models;
 using APISample.Sevices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace APISample.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SampleCRUDController : ControllerBase
     {
         //private readonly DatabaseContext DB;
@@ -51,6 +53,7 @@ namespace APISample.Controllers
 
         [HttpGet]
         [Route("All")]
+        
         public IActionResult getAll()
         {
             return Ok(crud.GetAll());

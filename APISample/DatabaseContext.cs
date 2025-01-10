@@ -10,5 +10,6 @@ namespace APISample
                 
         }
         public DbSet<TrialClass> SM_TrialClass_Mst { get; set; }
+        public DbSet<UserDetails> SM_UserDetails_Mst { get; set; }
     }
 }
