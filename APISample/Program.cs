@@ -16,6 +16,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DatabaseContext>(
     con => con.UseSqlServer(builder.Configuration.GetConnectionString("SampleCS")));
 
+//builder.Services.Configure<ForwardedHeadersOptions>(options =>
+//{
+//    options.ForwardedHeaders =
+//        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+//});
+
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -70,9 +77,10 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IJWtTokenGeneration, JWtTokenGeneration>();
 builder.Services.AddScoped<IUserDetails, SUserDetails>();
 builder.Services.AddScoped<ITrial, STrial>();
+builder.Services.AddScoped<IVehicleType, SVehicleType>();
 
 var app = builder.Build();
-
+//app.UseForwardedHeaders();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
