@@ -1,9 +1,11 @@
 using APISample;
 using APISample.Config;
 using APISample.Interface;
+using APISample.Interface.OTPSender;
 using APISample.Middleware;
 using APISample.Models;
 using APISample.Sevices;
+using APISample.Sevices.OTPSender;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
@@ -78,6 +80,7 @@ builder.Services.AddScoped<IJWtTokenGeneration, JWtTokenGeneration>();
 builder.Services.AddScoped<IUserDetails, SUserDetails>();
 builder.Services.AddScoped<ITrial, STrial>();
 builder.Services.AddScoped<IVehicleType, SVehicleType>();
+builder.Services.AddScoped<IOTPSender, SOTPSender>();
 
 var app = builder.Build();
 //app.UseForwardedHeaders();
